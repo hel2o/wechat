@@ -23,8 +23,8 @@ const (
 
 //WxErr 通用错误
 type WxErr struct {
-	ErrCode int
-	ErrMsg  string
+	ErrCode int    `json:"errcode"`
+	ErrMsg  string `json:"errmsg"`
 }
 
 func (w *WxErr) Error() error {
