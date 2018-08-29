@@ -44,7 +44,7 @@ func (s *Server) FetchServerIPList() {
 				continue
 			}
 			i = 0
-			time.Sleep(5 * time.Minute)
+			time.Sleep(FetchDelay)
 		}
 	}()
 }
