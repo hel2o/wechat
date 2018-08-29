@@ -1,6 +1,3 @@
-// 目前官方未提供golang版，本SDK实现参考了php版官方库
-// @woylin, since 2016-1-6
-
 package wechat
 
 import (
@@ -58,8 +55,10 @@ type Server struct {
 	UserList             userList
 	DeptList             DeptList
 	TagList              TagList
+	serverIPList         *IPlist
 	MsgQueue             chan interface{}
 	sync.Mutex                                           // accessToken读取锁
+	serverIPListLocker   sync.RWMutex                    // serverIPList读取锁
 	ExternalTokenHandler func(appId string) *AccessToken // 通过外部方法统一获取access token ,避免集群情况下token失效
 }
 

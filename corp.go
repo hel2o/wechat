@@ -30,6 +30,7 @@ func (s *Server) SetEnt(token, appId, secret, aeskey string, agentId ...int) (er
 		}
 	}
 	s.FetchUserList()
+	s.FetchServerIPList()
 	return nil
 }
 
