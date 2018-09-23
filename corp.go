@@ -14,7 +14,7 @@ const (
 )
 
 // SetEnt 初始化企业号，设置token,corpid,secrat,aesKey
-func (s *Server) SetEnt(token, appId, secret, aeskey string, agentId ...int) (err error) {
+func (s *Server) SetEnt(token, appId, secret, aeskey string, isSyncIPlist bool, agentId ...int) (err error) {
 	s.Token, s.AppId, s.Secret, s.SafeMode, s.EntMode = token, appId, secret, true, true
 	if len(agentId) > 0 {
 		s.AgentId = agentId[0]
@@ -30,13 +30,15 @@ func (s *Server) SetEnt(token, appId, secret, aeskey string, agentId ...int) (er
 		}
 	}
 	s.FetchUserList()
-	s.FetchServerIPList()
+	if isSyncIPlist {
+		s.FetchServerIPList()
+	}
 	return nil
 }
 
 // SetEnt 初始化企业号，设置token,corpid,secrat,aesKey
-func SetEnt(token, appId, secret, aeskey string, agentId ...int) (err error) {
-	return std.SetEnt(token, appId, secret, aeskey, agentId...)
+func SetEnt(token, appId, secret, aeskey string, isSyncIPlist bool, agentId ...int) (err error) {
+	return std.SetEnt(token, appId, secret, aeskey, isSyncIPlist, agentId...)
 }
 
 // FetchUserList 定期获取AccessToken

@@ -29,7 +29,7 @@ type WxErr struct {
 
 func (w *WxErr) Error() error {
 	if w.ErrCode != 0 {
-		return fmt.Errorf("err: errcode=%v , errmsg=%v", w.ErrCode, w.ErrMsg)
+		return fmt.Errorf("errcode=%v , errmsg=%v", w.ErrCode, w.ErrMsg)
 	}
 	return nil
 }

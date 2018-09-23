@@ -63,10 +63,10 @@ type Server struct {
 }
 
 // New 微信服务容器，根据agentId判断是企业号或服务号
-func New(token, appid, secret, key string, agentId ...int) (s *Server) {
+func New(token, appid, secret, key string, isSyncIPlist bool, agentId ...int) (s *Server) {
 	s = NewServer(nil)
 	if len(agentId) > 0 {
-		s.SetEnt(token, appid, secret, key, agentId[0])
+		s.SetEnt(token, appid, secret, key, isSyncIPlist, agentId[0])
 		if agentId[0] == 9999999 {
 			UserServerMap[appid] = s
 		}
